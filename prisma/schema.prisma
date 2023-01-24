@@ -1,0 +1,16 @@
+generator client {
+    provider      = "prisma-client-js"
+    binaryTargets = ["native", "rhel-openssl-1.0.x"]
+}
+
+datasource db {
+    provider = "mongodb"
+    url      = env("MONGODB_URI")
+}
+
+model Host {
+    id        String @id @default(auto()) @map("_id") @db.ObjectId
+    twitterId String
+    username  String
+    name      String
+}

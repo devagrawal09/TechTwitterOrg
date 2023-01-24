@@ -24,6 +24,8 @@ export default function Home() {
           new Date(b.scheduled_start!).getTime()
       ) || [];
 
+  const spaces = [ongoingSpaces(), upcomingSpaces()];
+
   const expansionsData = () => {
     const expansions = spacesData()?.includes;
     return expansions;
@@ -47,7 +49,7 @@ export default function Home() {
         <div class="flex-1 align-middle">
           <h1 class="text-3xl text-center">Ongoing Spaces</h1>
 
-          <div class="flex flex-wrap gap-5 p-5">
+          <div class="grid grid-cols-2 gap-5 p-5">
             <Show when={ongoingSpaces()} fallback={<div>Loading...</div>} keyed>
               {(spaces) => (
                 <Show

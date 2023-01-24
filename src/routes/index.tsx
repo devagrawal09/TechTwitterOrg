@@ -16,7 +16,13 @@ export default function Home() {
     spacesData()?.data?.filter((space) => space.state === "live") || [];
 
   const upcomingSpaces = () =>
-    spacesData()?.data?.filter((space) => space.state === "scheduled") || [];
+    spacesData()
+      ?.data?.filter((space) => space.state === "scheduled")
+      .sort(
+        (a, b) =>
+          new Date(a.scheduled_start!).getTime() -
+          new Date(b.scheduled_start!).getTime()
+      ) || [];
 
   const expansionsData = () => {
     const expansions = spacesData()?.includes;

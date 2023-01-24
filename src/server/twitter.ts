@@ -12,7 +12,7 @@ const client = new Client(twitterBearerToken);
 export const getSpaces = async () => {
   const hosts = await prisma.host.findMany();
   const user_ids = hosts.map((host) => host.twitterId);
-  console.log(hosts);
+
   const spaces = await client.spaces.findSpacesByCreatorIds({
     user_ids,
     "space.fields": [
